@@ -1,38 +1,41 @@
-# Software Requirement Specification
-### NBA Match Predictor (version 3)
-Implemented using: Python Eve. , MongoDB, Beautiful Soup, ...[insert more as project progresses] 
+# NBA Match Predictor &copy; 
+**PROJECT IN PROGRESS** 
 
-## Specifications:
-1. Set up backend server using MongoDB to store team statistics
-    - [x]  **Deadline: 11/25/2019** 
-    - [x] Set up endpoints 
-    - [x] Set up endpoints' schemas 
-  
-2. Implement scraping function using Beautiful Soup:
-    - [ ]  **Deadline: 11/28/2019** 
-    - [x] Ability to scrape team statistics on NBA Reference, Team Ranking
-    - [x] Ability to scrape game schedule on a specified date 
-    - [ ] Ability to scrape individual statistics in a specified season
-    - [ ] Ability to scrape matchup's rosters for a specific game in the past
-    
-3. Implement a Neural Network to predict matchup winner, by training from individual players ' statistics:
-    - [ ]  **Deadline: 12/5/2019** 
-    - [ ] Scrape games from the past 5 seasons. Store in some endpoints ?
-    - [ ] Train using matchup's rosters and individual players ' stats ?
-    - [ ] Use own Neural Network implementation or consider TensorFlow, Scikit-Learn
+**Author:** Khai H Lai
 
-4. Have a professional U.I/ Interactive Front End
-    - [ ]  **Deadline: 12/12/2019** 
-    - [ ] Consider bootstrapping (?)
-    - [ ] Or try to implement own frontend using HTML/CSS/React
-    - [ ] Host live website on an actual online server. Look into Docker, Heroku, Digital Ocean.
+**Last Updated:** 11/27/2019
 
-5. Set up accounts/ email-list (Optional): 
-    - [ ]  **Deadline: 12/20/2019** 
-    - [ ] Send registered users email of predictions.
-    - [ ] Store user logins, authentication,.. somehow
-        - [ ] Look into hashing function for password storage
-        - [ ] Set up auto-mailing server (?) 
+**Changelog:** 
+* Set up backend database using MongoDB
+* Added scraping functions to extract data about:
+    * Team statistics
+    * Game schedules 
+* Added Monte Carlos simulation algorithm. 
 
+**Language:** Python
+**Technology used so far** :
+* Python Eve.
+* MongoDB/pyMongo driver
+* BeautifulSoup scraper utilities
+* To be updated
+
+![NBA Finals 2019](https://user-images.githubusercontent.com/50902696/64215334-f46c7e80-ce4f-11e9-9d50-25ddd49c66da.jpg)
+This simple program uses Monte Carlo simulation to:
+ * predict the result of an NBA match.
+ * output each team's probability of winning the matchup.
+
+Also has functionality to scrape game calendar on a specified date and simulate games on that date.
+
+
+### Procedure Description
+The simulator uses BeautifulSoup utility to scrape data from Basketball Reference and Team Rankings. It then uses Monte-Carlo simulation (basically added random statistical variations applied on the procedure described on [Basketball Distribution](http://thebasketballdistribution.blogspot.com/2009/01/how-to-predict-final-score.html)) to give the probability of each team winning the match-up. By default, unless otherwise specified by user, the algorithm will simulate a matchup 10,000 times before returning the average winning probability for each team.
+
+### Features to be added:
+For more information and details, please refer to the [Software Requirement Specification]() for deadlines for these updates.
+
+* Working interactive frontend/U.I
+* Neural network to predict game results
+* Host webapp on live website 
+* Maybe user login, authentication, or email list (?)
 
 
