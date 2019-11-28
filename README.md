@@ -32,7 +32,7 @@ Also has functionality to scrape game calendar on a specified date and simulate 
 The simulator uses BeautifulSoup utility to scrape data from Basketball Reference and Team Rankings. It then uses Monte-Carlo simulation (basically added random statistical variations applied on the procedure described on [Basketball Distribution](http://thebasketballdistribution.blogspot.com/2009/01/how-to-predict-final-score.html)) to give the probability of each team winning the match-up. By default, unless otherwise specified by user, the algorithm will simulate a matchup 10,000 times before returning the average winning probability for each team.
 
 ### Features to be added:
-For more information and details, please refer to the [Software Requirement Specification]() for deadlines for these updates.
+For more information and details, please refer to the [Software Requirement Specification](https://github.com/treelover28/NBA-match-predictor/blob/master/Software%20Requirement%20Specification.md) for deadlines for these updates.
 
 * Working interactive frontend/U.I
 * Neural network to predict game results
