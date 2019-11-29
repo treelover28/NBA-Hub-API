@@ -38,14 +38,14 @@ def simulateMatch(a: Team, b: Team, league_avg: tuple, overtime: bool = False):
     return [(a.team_name, pointA), (b.team_name, pointB), overtime]
 
 
-def simulateMatches(a: Team, b: Team, repetition: int = 10000):
+def simulateMatches(a: Team, b: Team, repetition: int = 10000, season: int = 2020):
     # by defailt, simulate 10,000 times
     scoreA = 0
     scoreB = 0
     winsA = 0
     winsB = 0
     overtime_count = 0
-    league_avg = scraper.scrape_league_pace()
+    league_avg = scraper.scrape_league_pace(season)
     # print("Simulating ...")
     for i in range(0, repetition):
         # if i % 100 == 0:
@@ -68,18 +68,30 @@ def simulateMatches(a: Team, b: Team, repetition: int = 10000):
     probability_B = 1 - probability_A
 
     print(
-        f"{a.team_name}: chance of winning = {round(probability_A * 100, 2)}%, predicted score = {round(scoreA/repetition,2)} \n{b.team_name}: chance of winning = {round(probability_B* 100,2)}%, predicted score = {round(scoreB/repetition,2)} \nChance of going to overtime : {round(overtime_count/repetition * 100,2)}% \n"
+        f"{a.team_name}, {a.season}: chance of winning = {round(probability_A * 100, 2)}%, predicted score = {round(scoreA/repetition,2)} \n{b.team_name}, {b.season}: chance of winning = {round(probability_B* 100,2)}%, predicted score = {round(scoreB/repetition,2)} \nChance of going to overtime : {round(overtime_count/repetition * 100,2)}% \n"
     )
 
 
-def simulate(teamA: str, teamB: str, repetition: int = 10000):
+def simulate(
+    teamA: str,
+    teamB: str,
+    repetition: int = 10000,
+    seasonA: int = 2020,
+    seasonB: int = 2020,
+):
+    # allow simulation between teams in different seasons!
     connection = server()
     if len(teamA) == 3:
-        teamA = switch_abbreviation_teamName(teamA)
+        nameA = switch_abbreviation_teamName(teamA.lower())
+        if nameA is not None:
+            teamA = nameA
     if len(teamB) == 3:
-        teamB = switch_abbreviation_teamName(teamB)
-    A = connection.get_team(teamName=teamA)
-    B = connection.get_team(teamName=teamB)
+        nameB = switch_abbreviation_teamName(teamB.lower())
+        if nameB is not None:
+            teamB = nameB
+
+    A = connection.get_team(teamName=teamA, season=seasonA)
+    B = connection.get_team(teamName=teamB, season=seasonB)
     if A is None or B is None:
         print("Error. Team object(s) is/are null. Check spelling?")
         return
@@ -92,8 +104,9 @@ def simulate_all_games_on_date(year: int, month: int, day: int):
         if len(games_on_date) == 0:
             print("No game scheduled on this date.")
             return
+        season = scraper.season_of_date(year, month, day)
         for game in games_on_date:
-            simulate(game[0], game[1])
+            simulate(game[0], game[1], seasonA=season, seasonB=season)
 
 
 def is_validate_date(year: int, month: int, day: int):
@@ -107,36 +120,36 @@ def is_validate_date(year: int, month: int, day: int):
 
 def switch_abbreviation_teamName(team: str):
     lookup = {
-        "ATL": "Atlanta Hawks",
-        "BOS": "Boston Celtics",
-        "BRK": "Brooklyn Nets",
-        "CHA": "Charlotte Hornets",
-        "CHI": "Chicago Bulls",
-        "CLE": "Cleveland Cavaliers",
-        "DAL": "Dallas Mavericks",
-        "DEN": "Denver Nuggets",
-        "DET": "Detroit Pistons",
-        "GSW": "Golden State Warriors",
-        "HOU": "Houston Rockets",
-        "IND": "Indiana Pacers",
-        "LAC": "Los Angeles Clippers",
-        "LAL": "Los Angeles Lakers",
-        "MEM": "Memphis Grizzlies",
-        "MIA": "Miami Heat",
-        "MIL": "Milwaukee Bucks",
-        "MIN": "Minnesota Timberwolves",
-        "NOP": "New Orleans Pelicans",
-        "NYK": "New York Knicks",
-        "OKC": "Oklahoma City Thunder",
-        "ORL": "Orlando Magic",
-        "PHI": "Philadelphia 76ers",
-        "PHX": "Phoenix Suns",
-        "POR": "Portland Trail Blazers",
-        "SAC": "Sacramento Kings",
-        "SAS": "San Antonio Spurs",
-        "TOR": "Toronto Raptors",
-        "UTA": "Utah Jazz",
-        "WAS": "Washington Wizards",
+        "atl": "Atlanta Hawks",
+        "bos": "Boston Celtics",
+        "brk": "Brooklyn Nets",
+        "cho": "Charlotte Hornets",
+        "chi": "Chicago Bulls",
+        "cle": "Cleveland Cavaliers",
+        "dal": "Dallas Mavericks",
+        "den": "Denver Nuggets",
+        "det": "Detroit Pistons",
+        "gsw": "Golden State Warriors",
+        "hou": "Houston Rockets",
+        "ind": "Indiana Pacers",
+        "lac": "Los Angeles Clippers",
+        "lal": "Los Angeles Lakers",
+        "mem": "Memphis Grizzlies",
+        "mia": "Miami Heat",
+        "mil": "Milwaukee Bucks",
+        "min": "Minnesota Timberwolves",
+        "nop": "New Orleans Pelicans",
+        "nyk": "New York Knicks",
+        "okc": "Oklahoma City Thunder",
+        "orl": "Orlando Magic",
+        "phi": "Philadelphia 76ers",
+        "phx": "Phoenix Suns",
+        "por": "Portland Trail Blazers",
+        "sac": "Sacramento Kings",
+        "sas": "San Antonio Spurs",
+        "tor": "Toronto Raptors",
+        "uta": "Utah Jazz",
+        "was": "Washington Wizards",
     }
     valid_team = lookup.get(team)
     if valid_team:

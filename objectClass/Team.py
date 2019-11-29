@@ -2,6 +2,7 @@ class Team(object):
     def __init__(
         self,
         team_name: str,
+        season: int,
         offensive_rating: float,
         defensive_rating: float,
         pace: float,
@@ -10,6 +11,7 @@ class Team(object):
         loss: int = 0,
     ):
         self.team_name = team_name
+        self.season = season
         self.offensive_rating = offensive_rating
         self.defensive_rating = defensive_rating
         self.pace = pace
