@@ -9,11 +9,11 @@ Implemented using: Python Eve. , MongoDB, Beautiful Soup, ...[insert more as pro
     - [x] Set up endpoints' schemas 
   
 2. Implement scraping function using Beautiful Soup:
-    - [ ]  **Deadline: 11/28/2019** 
+    - [x]  **Deadline: 11/28/2019** 
     - [x] Ability to scrape team statistics on NBA Reference, Team Ranking
     - [x] Ability to scrape game schedule on a specified date 
     - [x] Ability to scrape individual statistics in a specified season
-    - [ ] Ability to scrape matchup's rosters for a specific game in the past
+    - [x] Ability to scrape matchup's rosters for a specific game in the past
     
 3. Implement a Neural Network to predict matchup winner, by training from individual players ' statistics:
     - [ ]  **Deadline: 12/5/2019** 
