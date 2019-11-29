@@ -3,14 +3,24 @@
 
 **Author:** Khai H Lai
 
-**Last Updated:** 11/27/2019
+**Last Updated:** 11/28/2019
 
-**Changelog:** 
-* Set up backend database using MongoDB
-* Added scraping functions to extract data about:
-    * Team statistics
-    * Game schedules 
-* Added Monte Carlos simulation algorithm. 
+**Changelog**: Please refer to [changelog.md](https://github.com/treelover28/NBA-match-predictor/blob/master/changelog.md) for full history of changes. Most recent changes includes:
+   * Allow simulation between teams in different seasons! For example, 2015 Warriors vs 2019 Lakers! '
+   * Allow more dynamic searching for teams and players by using regex matching:
+     * you can search for players just by typing substring of their names 
+     * you can simulate games between teams without having to type the full team out! For example,
+
+       ```python  
+       c = client()
+       # 2015 Brooklyn Nets vs 2019 Lakers
+       c.simulate_game(team_a="brk", team_b="lakers", season_of_A=2015, season_of_B=2019)
+       # 2015 Warriors vs 2019 Raptors
+       c.simulate_game(team_a="warriors", team_b="tor", season_of_A=2015, season_of_B=2019)
+       ```
+    * Allow more accurate ``` simulate_games_on_date(year, month, day)``` by using season-appropriate versions of teams to simulate. 
+    For example, ``` simulate_games_on_date(2016, 12, 28)``` would use the 2017-season version of teams to simulate the matchup instead
+    of current 2020 version.
 
 **Language:** Python
 
@@ -20,13 +30,15 @@
 * BeautifulSoup scraper utilities
 * To be updated
 
-![NBA Finals 2019](https://user-images.githubusercontent.com/50902696/64215334-f46c7e80-ce4f-11e9-9d50-25ddd49c66da.jpg)
+![Lakers](https://cdn.vox-cdn.com/thumbor/bSTk8WcbM2GtJttReLLsHnudFqg=/0x0:4962x3308/1200x800/filters:focal(1577x516:2369x1308)/cdn.vox-cdn.com/uploads/chorus_image/image/65753143/1189031820.jpg.0.jpg)
 This simple program uses Monte Carlo simulation to:
  * predict the result of an NBA match.
  * output each team's probability of winning the matchup.
 
-Also has functionality to scrape game calendar on a specified date and simulate games on that date.
+* Has functionality to scrape game calendar on a specified date and simulate games on that date.
+* Allows matchup simulation between teams from different seasons. Only support from the 2015-2020 seasons as of right now.
 
+ 
 ### Example simulation results on games on Christmas Day! 
 ![image](https://user-images.githubusercontent.com/50902696/69781254-c5258f00-116a-11ea-8a75-5226030a4498.png)
 
