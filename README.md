@@ -29,9 +29,10 @@
 * To be updated
 
 ![Lakers](https://cdn.vox-cdn.com/thumbor/bSTk8WcbM2GtJttReLLsHnudFqg=/0x0:4962x3308/1200x800/filters:focal(1577x516:2369x1308)/cdn.vox-cdn.com/uploads/chorus_image/image/65753143/1189031820.jpg.0.jpg)
+
 This simple program uses Monte Carlo simulation to:
- * predict the result of an NBA match.
- * output each team's probability of winning the matchup.
+  * predict the result of an NBA match.
+  * output each team's probability of winning the matchup.
 
 * Has functionality to scrape game calendar on a specified date and simulate games on that date.
 * Allows matchup simulation between teams from different seasons. Only support from the 2015-2020 seasons as of right now.
