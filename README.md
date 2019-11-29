@@ -18,9 +18,7 @@
        # 2015 Warriors vs 2019 Raptors
        c.simulate_game(team_a="warriors", team_b="tor", season_of_A=2015, season_of_B=2019)
        ```
-    * Allow more accurate ``` simulate_games_on_date(year, month, day)``` by using season-appropriate versions of teams to simulate. 
-    For example, ``` simulate_games_on_date(2016, 12, 28)``` would use the 2017-season version of teams to simulate the matchup instead
-    of current 2020 version.
+  * Allow more accurate ``` simulate_games_on_date(year, month, day)``` by using season-appropriate versions of teams to simulate. For example, ``` simulate_games_on_date(2016, 12, 28)``` would use the 2017-season version of teams to simulate the matchup instead of current 2020 version.
 
 **Language:** Python
 
