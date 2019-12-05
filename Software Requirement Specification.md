@@ -14,21 +14,22 @@ Implemented using: Python Eve. , MongoDB, Beautiful Soup, ...[insert more as pro
     - [x] Ability to scrape game schedule on a specified date 
     - [x] Ability to scrape individual statistics in a specified season
     - [x] Ability to scrape matchup's rosters for a specific game in the past
-    
-3. Implement a Neural Network to predict matchup winner, by training from individual players ' statistics:
-    - [ ]  **Deadline: 12/5/2019** 
-    - [ ] Scrape games from the past 5 seasons. Store in some endpoints ?
-    - [ ] Train using matchup's rosters and individual players ' stats ?
-    - [ ] Use own Neural Network implementation or consider TensorFlow, Scikit-Learn
+   
 
-4. Have a professional U.I/ Interactive Front End
+3. Have a professional U.I/ Interactive Front End
     - [ ]  **Deadline: 12/12/2019** 
     - [ ] Consider bootstrapping (?)
     - [ ] Or try to implement own frontend using HTML/CSS/React
     - [ ] Host live website on an actual online server. Look into Docker, Heroku, Digital Ocean.
+    
+4. Implement a Neural Network to predict matchup winner, by training from individual players ' statistics:
+    - [ ]  **Deadline: 12/20/2019** 
+    - [ ] Scrape games from the past 5 seasons. Store in some endpoints ?
+    - [ ] Train using matchup's rosters and individual players ' stats ?
+    - [ ] Use own Neural Network implementation or consider TensorFlow, Scikit-Learn
 
 5. Set up accounts/ email-list (Optional): 
-    - [ ]  **Deadline: 12/20/2019** 
+    - [ ]  **Deadline: 12/27/2019** 
     - [ ] Send registered users email of predictions.
     - [ ] Store user logins, authentication,.. somehow
         - [ ] Look into hashing function for password storage
