@@ -3,7 +3,7 @@
 
 **Author:** Khai H Lai
 
-**Last Updated:** 11/28/2019
+**Last Updated:** 12/06/2019
 
 **Changelog**: Please refer to [changelog.md](https://github.com/treelover28/NBA-match-predictor/blob/master/changelog.md) for full history of changes. Most recent changes includes:
    * Allow simulation between teams in different seasons! For example, 2015 Warriors vs 2019 Lakers! '
