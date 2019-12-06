@@ -18,8 +18,7 @@ Implemented using: Python Eve. , MongoDB, Beautiful Soup, ...[insert more as pro
 
 3. Have a professional U.I/ Interactive Front End
     - [ ]  **Deadline: 12/12/2019** 
-    - [ ] Consider bootstrapping (?)
-    - [ ] Or try to implement own frontend using HTML/CSS/React
+    - [ ] Implement own frontend using HTML/CSS/Javascript
     - [ ] Host live website on an actual online server. Look into Docker, Heroku, Digital Ocean.
     
 4. Implement a Neural Network to predict matchup winner, by training from individual players ' statistics:
