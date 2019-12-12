@@ -7,7 +7,9 @@
 
 **Changelog**: Please refer to [changelog.md](https://github.com/treelover28/NBA-match-predictor/blob/master/changelog.md) for full history of changes. Most recent changes includes:
  
-Added front-end web client to allow users to simulate games! Need to fix designs a bit though and add actual text description in place of the generic lorem ipsum. However, so far the structure and functionalities are taken care of!  
+* Added front-end web client to allow users to simulate games! Need to fix designs a bit though and add actual text description in place of the generic lorem ipsum. However, so far the structure and functionalities are taken care of!
+* Frontend web client is implemented using HTML/CSS/Javascript
+* Simulation functions in simulation.py now returns dictionaries of games results! 
 
 **Language:** Python
 
