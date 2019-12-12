@@ -1,3 +1,9 @@
+### 12/11/2019
+* Added front-end web client to allow users to simulate games! Need to fix designs a bit though and add actual text description in place of the generic lorem ipsum. However, so far the structure and functionalities are taken care of!
+* Frontend web client is implemented using HTML/CSS/Javascript
+* Simulation functions in simulation.py now returns dictionaries of games results! 
+
+
 ### 11/28/2019
 * Fixed backend endpoints:
   * ```/teams``` endpoint now contains different versions of a team from the 2014-2015 season to present.
