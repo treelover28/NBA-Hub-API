@@ -3,22 +3,11 @@
 
 **Author:** Khai H Lai
 
-**Last Updated:** 12/06/2019
+**Last Updated:** 12/11/2019
 
 **Changelog**: Please refer to [changelog.md](https://github.com/treelover28/NBA-match-predictor/blob/master/changelog.md) for full history of changes. Most recent changes includes:
-   * Allow simulation between teams in different seasons! For example, 2015 Warriors vs 2019 Lakers! '
-   * Allow more dynamic searching for teams and players by using regex matching:
-     * you can search for players just by typing substring of their names 
-     * you can simulate games between teams without having to type the full team out! For example,
-
-       ```python  
-       c = client()
-       # 2015 Brooklyn Nets vs 2019 Lakers
-       c.simulate_game(team_a="brk", team_b="lakers", season_of_A=2015, season_of_B=2019)
-       # 2015 Warriors vs 2019 Raptors
-       c.simulate_game(team_a="warriors", team_b="tor", season_of_A=2015, season_of_B=2019)
-       ```
-  * Allow more accurate ``` simulate_games_on_date(year, month, day)``` by using season-appropriate versions of teams to simulate. For example, ``` simulate_games_on_date(2016, 12, 28)``` would use the 2017-season version of teams to simulate the matchup instead of current 2020 version.
+ 
+Added front-end web client to allow users to simulate games! Need to fix designs a bit though and add actual text description in place of the generic lorem ipsum. However, so far the structure and functionalities are taken care of!  
 
 **Language:** Python
 
@@ -26,6 +15,7 @@
 * Python Eve.
 * MongoDB/pyMongo driver
 * BeautifulSoup scraper utilities
+* HTML/CSS/Javascript for front end
 * To be updated
 
 ![Lakers](https://cdn.vox-cdn.com/thumbor/bSTk8WcbM2GtJttReLLsHnudFqg=/0x0:4962x3308/1200x800/filters:focal(1577x516:2369x1308)/cdn.vox-cdn.com/uploads/chorus_image/image/65753143/1189031820.jpg.0.jpg)
