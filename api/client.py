@@ -17,7 +17,7 @@ class client(object):
         Scrape NBA-Reference for schedule on specific date. Simulate all games on that date and print 
         simulation results to terminal
         """
-        simulation.simulate_all_games_on_date(year, month, day)
+        return simulation.simulate_all_games_on_date(year, month, day)
 
     def simulate_game(
         self,
@@ -42,7 +42,7 @@ class client(object):
             \n
             season_of_B (int) : : which seasonal-version of team A to use for simulation. 
         """
-        simulation.simulate(team_a, team_b, repetition, season_of_A, season_of_B)
+        return simulation.simulate(team_a, team_b, repetition, season_of_A, season_of_B)
 
     def get_all_teams(self, season: int = 2020, printData: bool = False):
         """

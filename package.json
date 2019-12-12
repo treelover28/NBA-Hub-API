@@ -1,0 +1,22 @@
+{
+  "name": "nba",
+  "version": "1.0.0",
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "description": "**PROJECT IN PROGRESS**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treelover28/NBA-match-predictor.git"
+  },
+  "author": "khai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/treelover28/NBA-match-predictor/issues"
+  },
+  "homepage": "https://github.com/treelover28/NBA-match-predictor#readme"
+}

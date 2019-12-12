@@ -67,9 +67,21 @@ def simulateMatches(a: Team, b: Team, repetition: int = 10000, season: int = 202
     probability_A = winsA / repetition
     probability_B = 1 - probability_A
 
+    game_dict = {
+        "Team A": a.team_name,
+        "Team A's season": a.season,
+        "Team A's chance of winning": str(round(probability_A * 100, 2)) + "%",
+        "Team A's predicted score": str(round(scoreA / repetition, 2)) + " points",
+        "Team B": b.team_name,
+        "Team B's season": b.season,
+        "Team B's chance of winning": str(round(probability_B * 100, 2)) + "%",
+        "Team B's predicted score": str(round(scoreB / repetition, 2)) + " points",
+        "Overtime chance": str(round(overtime_count / repetition * 100, 2)) + "%",
+    }
     print(
         f"{a.team_name}, {a.season}: chance of winning = {round(probability_A * 100, 2)}%, predicted score = {round(scoreA/repetition,2)} \n{b.team_name}, {b.season}: chance of winning = {round(probability_B* 100,2)}%, predicted score = {round(scoreB/repetition,2)} \nChance of going to overtime : {round(overtime_count/repetition * 100,2)}% \n"
     )
+    return game_dict
 
 
 def simulate(
@@ -79,6 +91,9 @@ def simulate(
     seasonA: int = 2020,
     seasonB: int = 2020,
 ):
+    """
+    Return dictionary of game result
+    """
     # allow simulation between teams in different seasons!
     connection = server()
     if len(teamA) == 3:
@@ -93,9 +108,13 @@ def simulate(
     A = connection.get_team(teamName=teamA, season=seasonA)
     B = connection.get_team(teamName=teamB, season=seasonB)
     if A is None or B is None:
+        print(A is None)
+        print(B is None)
         print("Error. Team object(s) is/are null. Check spelling?")
         return
-    simulateMatches(A, B)
+    else:
+        game_dict = simulateMatches(A, B)
+        return game_dict
 
 
 def simulate_all_games_on_date(year: int, month: int, day: int):
@@ -103,10 +122,16 @@ def simulate_all_games_on_date(year: int, month: int, day: int):
         games_on_date = scraper.scrape_schedule(year, month, day)
         if len(games_on_date) == 0:
             print("No game scheduled on this date.")
-            return
+            return "No game scheduled on this date."
         season = scraper.season_of_date(year, month, day)
+        games = []
         for game in games_on_date:
-            simulate(game[0], game[1], seasonA=season, seasonB=season)
+            res = simulate(game[0], game[1], seasonA=season, seasonB=season)
+            # print("result in simulation")
+            # print(res)
+            # print("\n")
+            games.append(res)
+        return games
 
 
 def is_validate_date(year: int, month: int, day: int):

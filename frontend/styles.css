@@ -1,0 +1,420 @@
+body, ul, li, h1,h2, a{
+    margin: 0;
+    padding: 0;
+    font-family: verdana;
+    max-width: 100%;
+    width: auto;
+    overflow-x: hidden;
+}
+
+header {
+   background-color: #f87320; 
+   /* margin: 0px, 0px; */
+   /* padding: 5px; */
+   text-align : center;
+   width : 100%;
+   position: fixed;
+   /* fixed to the viewport */
+   max-width: 100%;
+   /* bring header forward */
+   z-index: 1;
+   top: 0%;
+   left: 0%;
+   /* box-sizing: border-box; */
+}
+
+header h1 {
+    color: white;
+    border: 8px solid white;
+    padding: 6px 10px; 
+    display: inline-block;
+    font-family: Verdana;
+    /* border-radius : 5px; */
+}
+.banner {
+    position: relative;
+}
+.banner img{
+    max-width: 100%;
+    width: 100%;
+    /* set max width to be 100% relative to the viewport! */
+    margin: -65px 0;
+}
+
+.banner .welcome {
+    background-color: #F87200;
+    color: white;
+    /* border-spacing: 20px; */
+    padding: 10px;
+    /*
+    Position is relative to parent's postion, doing this remove the element from regular
+    document flow, its "space" is now relative to the parent's space! 
+    */
+    position: absolute;
+    left: 0;
+    top: 65%;
+}
+
+.banner h2{
+    font-size: 24px;
+    font-family: Verdana;
+}
+
+.banner h2 span {
+    /* take values inherited from parent and scale up 1.3 */
+    font-size: 1.5em;
+}
+
+nav {
+    background-color: #F4F4F4;
+    padding: 20px 0px;
+    position: sticky;
+    top: 67px;
+    width: 100%;
+
+}
+nav ul {
+    white-space: nowrap;
+    /* margin: 0 auto; */
+    max-width: auto;
+    margin: 0 0;
+}
+nav li{
+    width: 25%;
+    display: inline-block;
+    font: 25px;
+    text-align: center;
+}
+
+nav li a{
+    text-decoration: none;
+    color: #4b4b4b;
+    font-family: Verdana;
+    text-align: center;
+}
+
+nav li a.simulation{
+    color: #FF8E13;
+    font-weight: bold;
+}
+
+main {
+    max-width: 100%;
+    width: 1200px;
+    margin: 80px auto;
+    padding: 0 auto;
+    /* box-sizing tells browser to incorporate the padding into total width */
+    box-sizing: border-box;
+    
+}
+img {
+    max-width: 100%;
+    width: 1200px;
+    /* margin: auto auto; */
+    box-sizing: border-box;
+}
+
+article h2 {
+    color: #f87320;
+    font-size: 30px;
+
+}
+
+article p {
+    /* determine space between lines*/
+    line-height: 2em;
+    color: #4b4b4b
+
+}
+
+.join {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 60px 40px;
+    color: #4b4b4b;
+}
+
+.join h2 {
+    font-size: 30px;
+
+}
+
+form input{
+    margin: 20px 0;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 28px;
+    border: 4px solid white;
+}
+
+#reset {
+    margin: 20px 0;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 28px;
+    border: 4px solid green;
+    display: inline-block
+}
+
+#reset_div {
+    display:block;
+    text-align: center;
+}
+
+#reset2{
+    margin: 20px 0;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 28px;
+    border: 4px solid green;
+    display: inline-block
+}
+
+#reset_div2 {
+    display:block;
+    text-align: center;
+}
+
+form select {
+    margin: 20px 0;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 28px;
+    border: 4px solid white;
+}
+
+footer{
+    background: #f87200;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* pseudoclasses */
+nav li a:hover {
+    text-decoration: underline;
+}
+
+.images li:hover {
+    position: relative;
+    right: -4px;
+
+}
+
+form input:focus{
+    border: 4px dashed #F87200;
+}
+
+form input:valid{
+    border: 4px solid green; 
+}
+/* Pseudo-elements allow us to inject dynamic content*/
+article p::first-line {
+    font-weight : bold;
+    font-size : 1.2em;
+}
+
+section.join p::first-letter {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+section.join p::selection {
+    /* what happens when you use cursor to select that specific p-tag */
+    background-color: #F87200;;
+    color: white;
+}
+
+/* .center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+} */
+
+/* Styles for simulation */
+#date_simulation{
+    /* border: 4px solid pink; */
+    display: block; 
+    text-align: center;
+    background-color : #F4F4F4;
+}
+
+h3 {
+    text-align: center;
+}
+
+#date_sim > label {
+    text-align: center;
+    display: block;
+}
+
+.simulation h2{
+    color: #f87320;
+    font-size: 30px;
+}
+
+#team_simulation{
+    display: block; 
+    text-align: center;
+    background-color : #F4F4F4;
+}
+
+select {
+  text-align: center;
+  text-align-last: center;
+  /* webkit*/
+}
+
+.hide {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width:1px;
+    height:1px;
+    visibility: hidden;
+}
+
+/* iframe {
+    display: block;
+    width : 100%;
+    height: 100%;
+} */
+/* #date_simulation */
+td {
+    text-align: left;
+    width: 50%;
+}
+
+.data{
+    text-align: center;
+    color: #f87320;
+}
+.result_table{
+    text-align: center;
+    display: block;
+    /* width : 100%; */
+    background-color : white;
+}
+table {
+    width: 100%;
+}
+tbody {
+    width: 100%;
+}
+/* option {
+  text-align: center;
+  /* reset to left*/
+
+/* p::after { */
+    /* inject content after p tag  */
+    /* content: '....'; */
+    /* insert '....' after every p-tag */
+/* } */
+
+
+/* .images{
+    text-align: center;
+    width: 1200px;
+    height: 1200px;
+    white-space: nowrap;;
+   
+}
+
+.images li {
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5%;
+}
+
+.images li img{
+    max-width: 100%
+}  */
+
+/* responsive style */
+@media screen and (max-width: 720px) {
+    /* no need to repeat styles we want to keep
+    just override or do new style, old styles stays */
+    .banner .welcome h2 {
+        font-size: 10px;
+    }
+    
+    .banner img{
+    /* set max width to be 100% relative to the viewport! */
+        margin: 5% auto auto auto;
+        display: inline;
+    }
+
+    .banner .welcome {
+        top: 50%;
+    }
+
+    header h1 {
+        font-size: 15px;
+        /* margin: auto auto auto auto */
+    }
+
+    /* nav li a {
+        font-size: 10px;
+    } */
+
+    nav li{
+        font-size: 10px;
+        margin: auto auto auto auto; 
+    }
+
+    nav ul {
+        white-space: nowrap;
+        /* margin: 0 auto; */
+        max-width: 100%;
+        margin: 0% 0.5%;
+    }
+
+    nav {
+        padding: 5px 0px;
+        position: sticky;
+        top: 7%;
+        width: auto;
+
+    }
+
+    article h2 {
+        font-size: 20px;
+ 
+
+    }
+
+    article p {
+        /* determine space between lines*/
+        font-size: 12px;
+
+    }
+
+    main {
+       
+        width: 1200px;
+        margin: 10% 1%;
+        padding: 0 auto;
+        /* box-sizing tells browser to incorporate the padding into total width */
+        box-sizing: border-box;
+    }
+
+    .join p {
+        font-size: 12px;
+    }
+
+    .join h2 {
+        font-size: 20px;
+    }
+
+    form input {
+        font-size: 12px;
+    }
+
+
+
+}
