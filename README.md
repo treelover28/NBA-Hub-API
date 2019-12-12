@@ -11,6 +11,10 @@
 * Frontend web client is implemented using HTML/CSS/Javascript
 * Simulation functions in simulation.py now returns dictionaries of games results! 
 
+### Video Showcase: 
+Click to play video lol
+[![Watch the video](https://user-images.githubusercontent.com/50902696/70679472-7855b400-1c52-11ea-871d-2e8993d2eb13.png)](https://www.youtube.com/watch?v=AoI-O0cpjbo)
+
 **Language:** Python
 
 **Technology used so far** :
