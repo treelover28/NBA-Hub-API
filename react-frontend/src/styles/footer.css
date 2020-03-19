@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  background-color: #24292e;
+  position: fixed;
+  bottom: 0;
+}
+
+.disclaimer {
+  display: inline;
+  padding: 0px 5px;
+  color: whitesmoke;
+  font-size: 12px;
+}
