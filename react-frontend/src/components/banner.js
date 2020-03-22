@@ -11,7 +11,7 @@ const Banner = () => {
         alt="website logo. An orange basketball."
       ></img>
       <div className="banner-title-container">
-        <h1 className="banner-title">NBA Hub</h1>
+        <h1 className="banner-title">NBA HUB</h1>
       </div>
     </div>
   );
