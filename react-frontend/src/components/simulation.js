@@ -18,14 +18,29 @@ class Simulation extends React.Component {
     }
   };
 
+  getOptionState = () => {
+    return this.state.showOption;
+  };
+
   render() {
-    // implement class
     return (
       <div className="simulationPanel">
+        {/* Clicking button will show 
+        the two simulation options */}
+
         <button className="button" onClick={this.showOption}>
           {this.state.buttonName}
         </button>
-        {this.state.showOption ? <SimulationPanel></SimulationPanel> : null}
+
+        {/* Pass function to child component props so when a simulation type is chosen, 
+          we don't show the other option anymore, but instead show the simulation panel running 
+          */}
+        {this.state.showOption ? (
+          <SimulationPanel
+            showOption={this.showOption}
+            getOptionState={this.getOptionState}
+          ></SimulationPanel>
+        ) : null}
       </div>
     );
   }

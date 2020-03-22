@@ -23,7 +23,8 @@
   box-shadow: 5px -5px 5px rgb(153, 152, 152);
 }
 
-.button {
+.button,
+.submit {
   background-color: #555;
   color: white;
   font-size: 16px;
@@ -31,6 +32,7 @@
   border: none;
 }
 
-.button:hover {
+.button:hover,
+.submit:hover {
   background-color: black;
 }
