@@ -15,7 +15,6 @@ CORS(app)
 @app.route("/handle_date", methods=["POST"])
 def handle_date_simulation():
     date = request.form["date"].split("-")
-
     c = client()
     c.update()
     result = c.simulate_games_on_date(int(date[0]), int(date[1]), int(date[2]))
