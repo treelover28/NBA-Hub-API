@@ -4,7 +4,6 @@ import players from "../images/players.jpg";
 const About = () => {
   return (
     <div className="about-container">
-      <h1 className="section-header">About this page</h1>
       <div className="picture-container">
         <img
           src={players}
@@ -12,7 +11,6 @@ const About = () => {
           alt="background showing three NBA players"
         ></img>
       </div>
-      <button className="button">PREDICT</button>
       <div className="about">
         <p className="intro">
           Pellentesque habitant morbi tristique senectus et netus et malesuada

@@ -1,7 +1,7 @@
 .about {
   padding: 5px 20px 5px 20px;
   background-color: #ffffff;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .picture {
@@ -13,24 +13,22 @@
   max-height: 400px;
   object-fit: cover;
 }
+
+.about-container {
+  /* margin 15% left and right*/
+  margin: 20px 15% 0 15%;
+  vertical-align: bottom;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 5px -5px 5px rgb(153, 152, 152);
+}
+
 .button {
-  width: 100%;
   background-color: #555;
   color: white;
   font-size: 16px;
   padding: 12px 24px;
   border: none;
-}
-.about-container {
-  /* margin 15% left and right*/
-  margin: 10% 15% 0 15%;
-  vertical-align: bottom;
-}
-
-.section-header {
-  color: whitesmoke;
-  text-align: left;
-  margin-bottom: 2px;
 }
 
 .button:hover {

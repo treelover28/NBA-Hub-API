@@ -1,0 +1,22 @@
+.decrease-top {
+  margin: 10px 15% 0 15%;
+}
+
+.info {
+  display: flex;
+}
+
+.info img {
+  object-fit: contain;
+  max-width: 40%;
+}
+
+.info p {
+  padding-left: 4%;
+}
+
+.about h1 {
+  width: 100%;
+  background-color: #555;
+  color: whitesmoke;
+}

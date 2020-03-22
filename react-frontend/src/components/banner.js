@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../images/bball-logo.svg";
+// import logo from "../images/bball-logo.svg";
+import logo from "../images/logo.gif";
 import "../styles/banner.css";
 const Banner = () => {
   return (
@@ -7,7 +8,7 @@ const Banner = () => {
       <img
         src={logo}
         className="logo"
-        alt="website logo. A black basketball."
+        alt="website logo. An orange basketball."
       ></img>
       <div className="banner-title-container">
         <h1 className="banner-title">NBA Hub</h1>
