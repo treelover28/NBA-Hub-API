@@ -1,0 +1,62 @@
+.selection {
+  display: inline-flex;
+  text-align: center;
+  vertical-align: center;
+  margin: 0 20px;
+  border-bottom: 1px solid #555;
+}
+
+.team-panel h2,
+h3 {
+  display: block;
+}
+
+.team-panel {
+  display: inline-block;
+  width: 80%;
+}
+
+hr {
+  width: 40%;
+}
+
+.center {
+  text-align: center;
+}
+
+.in-selection {
+  width: 100px;
+}
+
+.simulate {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  background-color: rgb(235, 77, 77);
+  color: whitesmoke;
+}
+
+.simulate:hover {
+  background-color: salmon;
+  color: whitesmoke;
+}
+
+.border {
+  border-left: 1px solid #555;
+}
+
+.dropdown {
+  background-color: whitesmoke;
+  color: black;
+  font-weight: bold;
+  width: 30%;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+  margin-bottom: 20px;
+}
+
+.button.dropdown:hover {
+  background-color: snow;
+  color: black;
+  width: 30%;
+}

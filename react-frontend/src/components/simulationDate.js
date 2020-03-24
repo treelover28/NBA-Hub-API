@@ -40,11 +40,9 @@ class SimulationDate extends React.Component {
                     required
                   />
                   <br />
-                  <input
-                    type="submit"
-                    className="button submit"
-                    value="Submit Date"
-                  />
+                  <button type="submit" className="button">
+                    Submit Date
+                  </button>
                 </form>
               </div>
             </div>

@@ -3,6 +3,7 @@ import "../styles/simulation.css";
 import img_calendar from "../images/calendar.jpg";
 import img_matchup from "../images/matchup.jpg";
 import SimulationDate from "./simulationDate";
+import SimulationMatchup from "./simulateMatchup";
 class SimulationPanel extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +33,7 @@ class SimulationPanel extends React.Component {
     });
     // this.props.showOption();
     // close option menu
-    alert("Simulate By Matchup");
+    // alert("Simulate By Matchup");
   };
   render() {
     return (
@@ -91,7 +92,9 @@ class SimulationPanel extends React.Component {
 
         {/* conditionally render the simulation pages */}
         {this.state.simulateDate ? <SimulationDate></SimulationDate> : null}
-        {this.state.simulateMatchup ? null : null}
+        {this.state.simulateMatchup ? (
+          <SimulationMatchup></SimulationMatchup>
+        ) : null}
       </div>
     );
   }
