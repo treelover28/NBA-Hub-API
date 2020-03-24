@@ -9,8 +9,9 @@ from datetime import datetime
 
 class client(object):
     def __init__(self):
+        # connect to mongoDB
         self.my_client = pymongo.MongoClient("localhost", 27017)
-        self.db = self.my_client["nba"]
+        self.db = self.my_client.get_database("nba")
 
     def simulate_games_on_date(self, year: int, month: int, day: int):
         """
@@ -51,12 +52,15 @@ class client(object):
             season (int) : season number which is 2020 (current season) by default. \n
             printData (bool) : print the returned list of teams nicely.
         """
+        # get list of all teams in a current season as a JSON from MongoDB
         results = self.db["teams"].find({"season": season})
         if results is not None:
             teams = []
             for result in results:
+                # if user specifies to print data then pretty-print it
                 if printData:
                     pretty(result)
+                # create team object and add to list
                 team = Team(
                     team_name=result["team_name"],
                     season=result["season"],
@@ -67,7 +71,8 @@ class client(object):
                     loss=result["loss"],
                 )
                 teams.append(team)
-            return teams
+            return teams  # return list of teams
+        # else, if teams are not found on database, return nothing
         return None
 
     def get_team(self, team_name: str, season: int):
@@ -84,7 +89,7 @@ class client(object):
 
     def get_players(self, player_name: str, season: int):
         """
-        Return a list of Player objects of  matching players at specified season. \n
+        Return a list of Player objects of matching players at specified season. \n
         Arguments :
             :param player_name (str) : name of player. Support search for partial strings of player names. \n
             :param season (int): the seasonal version of the team.
@@ -97,25 +102,25 @@ class client(object):
         connection = server()
         return connection.get_players(player_name, season)
 
-    def update(self):
-        """
-        Update team statistics on database if last update was more than 24 hours ago. \n
-        No argument.
-        """
-        team = self.db["teams"].find_one({"season": 2020})
-        # find time differences
-        time_diff = datetime.today() - team["_created"]
-        # if total time difference is more than 24 hours, then update
-        if time_diff.total_seconds() > (24 * 3600):
-            connection = server()
-            connection.update_teams_specified_season(2020)
-            print("UPDATED")
+    # def update(self):
+    #     """
+    #     Update team statistics on database if last update was more than 24 hours ago. \n
+    #     No argument.
+    #     """
+    #     team = self.db["teams"].find_one({"season": 2020})
+    #     # find time differences
+    #     time_diff = datetime.today() - team["_created"]
+    #     # if total time difference is more than 24 hours, then update
+    #     if time_diff.total_seconds() > (24 * 3600):
+    #         connection = server()
+    #         connection.update_teams_specified_season(2020)
+    #         print("UPDATED")
 
 
 def main():
     c = client()
-    c.update()
-    c.simulate_games_on_date(2019, 12, 5)
+    c.simulate_game("lal", "lac")
+    c.simulate_games_on_date(2019, 12, 25)
 
 
 if __name__ == "__main__":

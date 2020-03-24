@@ -10,21 +10,26 @@ from objectClass.Player import Player
 
 
 def scrape_teams(season: int = 2020):
+    # send a get request to basketball-reference
+    # get a response object back
     nbaref = requests.get(
         "https://www.basketball-reference.com/leagues/NBA_{}_ratings.html".format(
             season
         )
     )
-
+    # use BeautifulSoup to parse the response into XML format
     soup = BeautifulSoup(nbaref.text, "lxml")
+    # lists of different statistics
     teamName = soup.findAll(attrs={"data-stat": "team_name"})
     offensive_rating = soup.findAll(attrs={"data-stat": "off_rtg"})
     defensive_rating = soup.findAll(attrs={"data-stat": "def_rtg"})
     w = soup.findAll(attrs={"data-stat": "wins"})
     l = soup.findAll(attrs={"data-stat": "losses"})
 
+    # generate list of teams information
     teamList = []
     for i in range(1, 31):
+        # group statistics together to form team
         team = Team(
             teamName[i].text,
             int(season),
@@ -35,7 +40,7 @@ def scrape_teams(season: int = 2020):
             loss=int(l[i].text),
         )
         teamList.append(team)
-
+    # sort teamList by alphabetical order
     teamList = sorted(teamList, key=lambda x: x.team_name)
 
     # scrape TeamRanking for PACE factor
@@ -80,6 +85,7 @@ def switch_date(season: int = 2020):
 
 
 def scrape_schedule(year: int, month: int, day: int):
+    # get corresponding season back
     season = season_of_date(year, month, day)
 
     url = f"https://www.basketball-reference.com/leagues/NBA_{season}_games-{switch_month(month)}.html"
@@ -178,7 +184,6 @@ def scrape_players(season: int = 2020):
         advanced_url = (
             f"https://www.basketball-reference.com/leagues/NBA_{season}_advanced.html"
         )
-
         # get data for selected statistics
         per_game_doc = requests.get(per_game_url)
         per_game_soup = BeautifulSoup(per_game_doc.text, "lxml")
@@ -204,7 +209,6 @@ def scrape_players(season: int = 2020):
 
         playerList = []
         for i in range(1, len(player_name)):
-
             name = player_name[i].text
             pos = position[i].text
             # in case a stat doesn't exist, Basketball Reference stores a empty value for the stat

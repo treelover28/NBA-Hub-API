@@ -6,6 +6,7 @@ import sys
 import scraper
 import simulation
 import re
+from datetime import datetime
 
 sys.path.append("../")
 from objectClass.Team import Team
@@ -14,8 +15,18 @@ from objectClass.Player import Player
 
 class server(object):
     def __init__(self):
-        self.my_server = pymongo.MongoClient("localhost", 27017)
-        self.db = self.my_server["nba"]
+        self.connection = pymongo.MongoClient("localhost", 27017)
+        self.db = self.connection.get_database("nba")
+        # check if database is empty, in case this is the first time the API start
+        # or if database if missing information for some reason
+        if "teams" not in self.db.list_collection_names() or (
+            self.db["teams"].find_one({"season": 2020}) is None
+        ):
+            self.update_teams_all_seasons()
+            self.update_all_players_all_seasons()
+        else:
+            # if data is not empty AND there is no missing data, try to update it
+            self.update()
 
     def url_for(self, endpoint):
         """
@@ -234,3 +245,28 @@ class server(object):
             return players_matched
         return None
 
+    def update(self):
+        """
+        Update team statistics on database if last update was more than 24 hours ago. \n
+        No argument.
+        """
+        team = self.db["teams"].find_one({"season": 2020})
+        # find time differences
+        time_diff = datetime.today() - team["_created"]
+        # if total time difference is more than 24 hours, then update
+        if time_diff.total_seconds() > (24 * 3600):
+            self.update_teams_specified_season(2020)
+            print("UPDATED")
+
+
+def main():
+    s = server()
+    # s.connection.drop_database("nba")
+    # s.delete_all_players_seasons()
+    # s.delete_all_teams()
+    # s.update_teams_all_seasons()
+    # s.update_all_players_all_seasons()
+
+
+if __name__ == "__main__":
+    main()
