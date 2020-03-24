@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <Banner></Banner>
-
       <About></About>
       <Simulation></Simulation>
       <br></br>
