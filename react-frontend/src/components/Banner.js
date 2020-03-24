@@ -7,7 +7,7 @@ const Banner = () => {
     <div className="banner">
       <img
         src={logo}
-        className="logo"
+        className="site-logo"
         alt="website logo. An orange basketball."
       ></img>
       <div className="banner-title-container">

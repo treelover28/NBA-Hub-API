@@ -1,4 +1,6 @@
 import React from "react";
+
+// statically import all 30 logos
 import hawks from "../images/logos/hawks.png";
 import celtics from "../images/logos/celtics.png";
 import nets from "../images/logos/nets.png";
@@ -31,6 +33,8 @@ import jazz from "../images/logos/jazz.png";
 import wizards from "../images/logos/wizards.png";
 
 import "../styles/simulateMatchup.css";
+import SimulationResult from "./SimulationResult";
+
 class SimulateMatchup extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +46,8 @@ class SimulateMatchup extends React.Component {
       homePicture: hawks,
       awayPicture: celtics,
       homeIndex: 0,
-      awayIndex: 1
+      awayIndex: 1,
+      simulated: false
     };
 
     this.teams = [
@@ -138,6 +143,10 @@ class SimulateMatchup extends React.Component {
     }
   };
 
+  simulate = () => {
+    alert("Simulate");
+    this.setState({ simulated: true });
+  };
   render() {
     return (
       <div className="about-container center border">
@@ -222,7 +231,21 @@ class SimulateMatchup extends React.Component {
             </button>
           </div>
         </div>
-        <button className="button simulate">Simulate Matchup</button>
+        <button className="button simulate" onClick={this.simulate}>
+          Simulate Matchup
+        </button>
+        {this.state.simulated ? (
+          <SimulationResult
+            home={this.state.home}
+            homeScore={113}
+            homeProbs={"88%"}
+            homeLogo={this.state.homePicture}
+            away={this.state.away}
+            awayScore={108}
+            awayProbs={"12%"}
+            awayLogo={this.state.awayPicture}
+          ></SimulationResult>
+        ) : null}
       </div>
     );
   }

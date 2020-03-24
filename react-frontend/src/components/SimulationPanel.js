@@ -2,8 +2,8 @@ import React from "react";
 import "../styles/simulation.css";
 import img_calendar from "../images/calendar.jpg";
 import img_matchup from "../images/matchup.jpg";
-import SimulationDate from "./simulationDate";
-import SimulationMatchup from "./simulateMatchup";
+import SimulationDate from "./SimulationDate";
+import SimulationMatchup from "./SimulateMatchup";
 class SimulationPanel extends React.Component {
   constructor(props) {
     super(props);

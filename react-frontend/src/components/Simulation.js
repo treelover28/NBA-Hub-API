@@ -1,5 +1,5 @@
 import React from "react";
-import SimulationPanel from "./simulationPanel";
+import SimulationPanel from "./SimulationPanel";
 import "../styles/simulation.css";
 class Simulation extends React.Component {
   constructor(props) {

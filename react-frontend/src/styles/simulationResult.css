@@ -1,0 +1,26 @@
+.home {
+  display: flex;
+  text-align: center;
+  width: 50%;
+}
+
+.away {
+  display: flex;
+  text-align: center;
+  width: 50%;
+}
+
+.result-container {
+  display: flex;
+  align-items: center;
+}
+
+.result {
+  width: 50%;
+}
+
+.nba-logo {
+  display: inline-block;
+  width: 50%;
+  height: 80%;
+}
