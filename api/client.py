@@ -119,7 +119,7 @@ class client(object):
 
 def main():
     c = client()
-    c.simulate_game("Brookyn Nets", "Wizards")
+    c.simulate_game("lac", "lal")
     c.simulate_games_on_date(2019, 12, 25)
 
 
