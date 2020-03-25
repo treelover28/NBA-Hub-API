@@ -18,8 +18,6 @@ def handle_date_simulation():
     # receive date from the form in the request
     date = request.form["date"].split("-")
     c = client()
-    # update database
-    c.update()
     # return a JSON containing results for game on that date
     result = c.simulate_games_on_date(int(date[0]), int(date[1]), int(date[2]))
     response = json.dumps(result)
@@ -29,16 +27,15 @@ def handle_date_simulation():
 @app.route("/handle-teams", methods=["POST"])
 def handle_teams_simulation():
     # get data from form
-    data = request.form
+    data = request.get_json()
     # get team names
-    teamA = data["teamA"]
-    teamB = data["teamB"]
+    teamA = data["home"]
+    teamB = data["away"]
     # convert string to int to get team season
-    teamA_season = int(data["teamA_season"])
-    teamB_season = int(data["teamB_season"])
-    # connect to server and update if necessary
+    teamA_season = int(data["homeSeason"])
+    teamB_season = int(data["awaySeason"])
+    # connect to server
     c = client()
-    c.update()
     # get back dictionary of result
     result = c.simulate_game(
         teamA, teamB, season_of_A=teamA_season, season_of_B=teamB_season
@@ -52,7 +49,9 @@ def handle_teams_simulation():
 @app.after_request
 def after_request(response):
     response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+    response.headers.add(
+        "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
+    )
     response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE")
     return response
 

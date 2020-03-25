@@ -26,6 +26,7 @@ class server(object):
             self.update_all_players_all_seasons()
         else:
             # if data is not empty AND there is no missing data, try to update it
+            print("UPDATE")
             self.update()
 
     def url_for(self, endpoint):

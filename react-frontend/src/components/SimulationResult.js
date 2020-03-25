@@ -12,7 +12,7 @@ const SimulationResult = props => {
             alt="home team logo"
           ></img>
           <div className="result">
-            <h2>{props.home}</h2>
+            <h2>{props.home + " " + props.homeSeason}</h2>
             <h4>Predicted Score: </h4>
             <h5>{props.homeScore}</h5>
             <h4>Predicted Win Probablity: </h4>
@@ -26,7 +26,7 @@ const SimulationResult = props => {
             className="nba-logo"
           ></img>
           <div className="result">
-            <h2>{props.away}</h2>
+            <h2>{props.away + " " + props.awaySeason}</h2>
             <h4>Predicted Score: </h4>
             <h5>{props.awayScore}</h5>
             <h4>Predicted Win Probablity: </h4>
@@ -34,6 +34,7 @@ const SimulationResult = props => {
           </div>
         </div>
       </div>
+      <h4>Overtime Probablity: {props.overtime} </h4>
     </div>
   );
 };

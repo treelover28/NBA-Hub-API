@@ -41,10 +41,21 @@ class SimulateMatchup extends React.Component {
     this.state = {
       home: "Atlanta Hawks",
       away: "Boston Celtics",
+      homeFinal: "Atlanta Hawks",
+      awayFinal: "Boston Celtics",
       homeSeason: 2020,
       awaySeason: 2020,
+      homeSeasonFinal: 2020,
+      awaySeasonFinal: 2020,
+      homeScore: "",
+      homeProbs: "",
+      awayScore: "",
+      awayProbs: "",
+      overtime: "",
       homePicture: hawks,
       awayPicture: celtics,
+      homePictureFinal: hawks,
+      awayPictureFinal: celtics,
       homeIndex: 0,
       awayIndex: 1,
       simulated: false
@@ -53,7 +64,7 @@ class SimulateMatchup extends React.Component {
     this.teams = [
       { team: "Atlanta Hawks", pic: hawks },
       { team: "Boston Celtics", pic: celtics },
-      { team: "Brookyn Nets", pic: nets },
+      { team: "Brooklyn Nets", pic: nets },
       { team: "Charlotte Hornets", pic: hornets },
       { team: "Chicago Bulls", pic: bulls },
       { team: "Cleveland Cavaliers", pic: cavs },
@@ -61,21 +72,21 @@ class SimulateMatchup extends React.Component {
       { team: "Denver Nuggets", pic: nuggets },
       { team: "Detroit Pistons", pic: pistons },
       { team: "Golden State Warriors", pic: warriors },
-      { team: "Houton Rockets", pic: rockets },
+      { team: "Houston Rockets", pic: rockets },
       { team: "Indiana Pacers", pic: pacers },
       { team: "Los Angeles Clippers", pic: clippers },
       { team: "Los Angeles Lakers", pic: lakers },
       { team: "Memphis Grizzlies", pic: grizzlies },
-      { team: "Miami Heats", pic: heats },
+      { team: "Miami Heat", pic: heats },
       { team: "Milwaukee Bucks", pic: bucks },
       { team: "Minnesota Timberwolves", pic: wolves },
       { team: "New Orleans Pelicans", pic: pelicans },
       { team: "New York Knicks", pic: knicks },
-      { team: "Oklahoma City Thunders", pic: thunders },
-      { team: "Orlando Magics", pic: magics },
-      { team: "Philadelphia Sixers", pic: sixers },
+      { team: "Oklahoma City Thunder", pic: thunders },
+      { team: "Orlando Magic", pic: magics },
+      { team: "Philadelphia 76ers", pic: sixers },
       { team: "Phoenix Suns", pic: suns },
-      { team: "Portland Trailblazers", pic: blazers },
+      { team: "Portland Trail Blazers", pic: blazers },
       { team: "Sacramento Kings", pic: kings },
       { team: "San Antonio Spurs", pic: spurs },
       { team: "Toronto Raptors", pic: raptors },
@@ -146,6 +157,43 @@ class SimulateMatchup extends React.Component {
   simulate = () => {
     alert("Simulate");
     this.setState({ simulated: true });
+    // convert matchup state to data
+    let rawData = {
+      home: this.state.home,
+      away: this.state.away,
+      homeSeason: this.state.homeSeason,
+      awaySeason: this.state.awaySeason
+    };
+
+    let data = JSON.stringify(rawData);
+    console.log(data);
+    // create XHR object
+    let xhr = new XMLHttpRequest();
+    const url = "http://127.0.0.1:5000/handle-teams";
+    // open a POST request to url
+    // async = true
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    // send data to API
+    xhr.send(data);
+    // get response back from API
+    xhr.onload = () => {
+      let response = JSON.parse(xhr.responseText);
+      this.setState({
+        homeFinal: response["Team A"],
+        awayFinal: response["Team B"],
+        homeSeasonFinal: response["Team A's season"],
+        awaySeasonFinal: response["Team B's season"],
+        homePictureFinal: this.state.homePicture,
+        awayPictureFinal: this.state.awayPicture,
+        homeProbs: response["Team A's chance of winning"],
+        awayProbs: response["Team B's chance of winning"],
+        homeScore: response["Team A's predicted score"],
+        awayScore: response["Team B's predicted score"],
+        overtime: response["Overtime chance"]
+      });
+      console.log(response);
+    };
   };
   render() {
     return (
@@ -236,14 +284,17 @@ class SimulateMatchup extends React.Component {
         </button>
         {this.state.simulated ? (
           <SimulationResult
-            home={this.state.home}
-            homeScore={113}
-            homeProbs={"88%"}
-            homeLogo={this.state.homePicture}
-            away={this.state.away}
-            awayScore={108}
-            awayProbs={"12%"}
-            awayLogo={this.state.awayPicture}
+            home={this.state.homeFinal}
+            homeScore={this.state.homeScore}
+            homeProbs={this.state.homeProbs}
+            homeLogo={this.state.homePictureFinal}
+            homeSeason={this.state.homeSeasonFinal}
+            awaySeason={this.state.awaySeasonFinal}
+            away={this.state.awayFinal}
+            awayScore={this.state.awayScore}
+            awayProbs={this.state.awayProbs}
+            awayLogo={this.state.awayPictureFinal}
+            overtime={this.state.overtime}
           ></SimulationResult>
         ) : null}
       </div>
