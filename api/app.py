@@ -16,7 +16,8 @@ CORS(app)
 @app.route("/handle-date", methods=["POST"])
 def handle_date_simulation():
     # receive date from the form in the request
-    date = request.form["date"].split("-")
+    data = request.get_json()
+    date = data["date"].split("-")
     c = client()
     # return a JSON containing results for game on that date
     result = c.simulate_games_on_date(int(date[0]), int(date[1]), int(date[2]))
@@ -48,7 +49,6 @@ def handle_teams_simulation():
 
 @app.after_request
 def after_request(response):
-    response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add(
         "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
     )

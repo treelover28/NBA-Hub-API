@@ -4,37 +4,47 @@ const SimulationResult = props => {
   return (
     <div className="about">
       <h1>Simulation Result</h1>
-      <div className="result-container">
-        <div className="home">
-          <img
-            src={props.homeLogo}
-            className="nba-logo"
-            alt="home team logo"
-          ></img>
-          <div className="result">
-            <h2>{props.home + " " + props.homeSeason}</h2>
-            <h4>Predicted Score: </h4>
-            <h5>{props.homeScore}</h5>
-            <h4>Predicted Win Probablity: </h4>
-            <h5>{props.homeProbs}</h5>
-          </div>
+      {props.noGame ? (
+        <div>
+          <br></br>
+          <h2>NO GAMES SCHEDULED ON THIS DATE</h2>
+          <br></br>
         </div>
-        <div className="away">
-          <img
-            src={props.awayLogo}
-            alt="away team logo"
-            className="nba-logo"
-          ></img>
-          <div className="result">
-            <h2>{props.away + " " + props.awaySeason}</h2>
-            <h4>Predicted Score: </h4>
-            <h5>{props.awayScore}</h5>
-            <h4>Predicted Win Probablity: </h4>
-            <h5>{props.awayProbs}</h5>
+      ) : (
+        <div>
+          <div className="result-container">
+            <div className="home">
+              <img
+                src={props.homeLogo}
+                className="nba-logo"
+                alt="home team logo"
+              ></img>
+              <div className="result">
+                <h2>{props.home + " " + props.homeSeason}</h2>
+                <h3>Predicted Score: </h3>
+                <h4>{props.homeScore}</h4>
+                <h3>Predicted Win Probablity: </h3>
+                <h4>{props.homeProbs}</h4>
+              </div>
+            </div>
+            <div className="away">
+              <img
+                src={props.awayLogo}
+                alt="away team logo"
+                className="nba-logo"
+              ></img>
+              <div className="result">
+                <h2>{props.away + " " + props.awaySeason}</h2>
+                <h3>Predicted Score: </h3>
+                <h4>{props.awayScore}</h4>
+                <h3>Predicted Win Probablity: </h3>
+                <h4>{props.awayProbs}</h4>
+              </div>
+            </div>
           </div>
+          <h3>Overtime Probablity: {props.overtime} </h3>
         </div>
-      </div>
-      <h4>Overtime Probablity: {props.overtime} </h4>
+      )}
     </div>
   );
 };

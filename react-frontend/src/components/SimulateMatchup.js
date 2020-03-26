@@ -155,7 +155,6 @@ class SimulateMatchup extends React.Component {
   };
 
   simulate = () => {
-    alert("Simulate");
     this.setState({ simulated: true });
     // convert matchup state to data
     let rawData = {
@@ -164,9 +163,7 @@ class SimulateMatchup extends React.Component {
       homeSeason: this.state.homeSeason,
       awaySeason: this.state.awaySeason
     };
-
     let data = JSON.stringify(rawData);
-    console.log(data);
     // create XHR object
     let xhr = new XMLHttpRequest();
     const url = "http://127.0.0.1:5000/handle-teams";
@@ -192,7 +189,7 @@ class SimulateMatchup extends React.Component {
         awayScore: response["Team B's predicted score"],
         overtime: response["Overtime chance"]
       });
-      console.log(response);
+      // console.log(response);
     };
   };
   render() {
