@@ -79,7 +79,6 @@ class SimulationDate extends React.Component {
   }
 
   simulateDate = () => {
-    console.log("YUR");
     // get form data by selecting form document
     let date = document.getElementsByClassName("date-input")[0].value;
     this.setState({ date: date });
@@ -118,6 +117,7 @@ class SimulationDate extends React.Component {
                     type="date"
                     className="date-input"
                     id="date"
+                    min="2014-09-01"
                     //   max="2020-04-15"
                     required
                   />

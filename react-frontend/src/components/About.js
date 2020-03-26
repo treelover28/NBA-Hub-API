@@ -13,13 +13,19 @@ const About = () => {
       </div>
       <div className="about">
         <p className="intro">
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-          ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-          egestas semper. Pellentesque habitant morbi tristique senectus et
-          netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
-          feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-          sit amet quam egestas semper.
+          Hey everyone! My name is Khai Lai and I'm a 3rd year CS student at
+          University of Denver.
+        </p>
+        <p>
+          I love basketball and coding so I thought, you know, might as well
+          combine those two hobbies together and do a project trying to predict
+          basketball games! This website scrapes data from Basketball Reference
+          and uses a Monte Carlo-like simulation process to predict the outcomes
+          of the games!
+        </p>
+        <p>
+          I don't make any money of this website, it is just a fun student
+          project to help me learn full-stack web development :)
         </p>
       </div>
     </div>

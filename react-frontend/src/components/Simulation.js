@@ -11,10 +11,10 @@ class Simulation extends React.Component {
   }
 
   showOption = () => {
-    if (this.state.buttonName === "Close Panel") {
+    if (this.state.buttonName === "Reset Panel") {
       this.setState({ showOption: false, buttonName: "Predict" });
     } else {
-      this.setState({ showOption: true, buttonName: "Close Panel" });
+      this.setState({ showOption: true, buttonName: "Reset Panel" });
     }
   };
 

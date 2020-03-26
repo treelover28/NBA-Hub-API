@@ -51,10 +51,13 @@ class SimulationPanel extends React.Component {
                   ></img>
                   <div className="text-button">
                     <p>
-                      Pellentesque habitant morbi tristique senectus et netus et
-                      malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                      feugiat vitae, ultricies eget, tempor sit amet, ante.
-                      Donec eu libero sit amet quam egestas semper.
+                      Choose a date to generate predictions for games on that
+                      date!
+                    </p>
+                    <p>
+                      You can also select dates from the past, from 2014-09-01
+                      up to now, to see what the algorithm think should have
+                      happened and compare real-life results!
                     </p>
                     <button className="button" onClick={this.simulateByDate}>
                       SIMULATE BY DATE
@@ -75,11 +78,14 @@ class SimulationPanel extends React.Component {
                   ></img>
                   <div className="text-button">
                     <p>
-                      Pellentesque habitant morbi tristique senectus et netus et
-                      malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                      feugiat vitae, ultricies eget, tempor sit amet, ante.
-                      Donec eu libero sit amet quam egestas semper.
+                      Choose two teams and their corresponding season to
+                      matchup!
                     </p>
+                    <p>
+                      For example, you can simulate what would happen if the
+                      2017 Warriors plays the 2020 Lakers!
+                    </p>
+                    <p>Give it a try!</p>
                     <button className="button" onClick={this.simulateByMatchup}>
                       SIMULATE BY MATCHUP
                     </button>
