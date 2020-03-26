@@ -17,10 +17,17 @@ CORS(app)
 def handle_date_simulation():
     # receive date from the form in the request
     data = request.get_json()
+
     date = data["date"].split("-")
+    year = int(date[0])
+    month = int(date[1])
+    day = int(date[2])
+    # handle request for unsupported seasons
+    if year <= 2014 and month <= 9:
+        return json.dumps("Season is not supported.")
     c = client()
     # return a JSON containing results for game on that date
-    result = c.simulate_games_on_date(int(date[0]), int(date[1]), int(date[2]))
+    result = c.simulate_games_on_date(year, month, day)
     response = json.dumps(result)
     return response
 

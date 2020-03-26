@@ -121,7 +121,6 @@ class SimulationDate extends React.Component {
                     //   max="2020-04-15"
                     required
                   />
-                  <br />
                 </form>
                 <button className="button" onClick={this.simulateDate}>
                   Simulate games on Date
@@ -133,16 +132,20 @@ class SimulationDate extends React.Component {
         {// return result panel if there are games on the chosen date
         // else, return a message to panel notifying there are no games on that date
         this.state.simulated ? (
-          this.state.result === "No game scheduled on this date." ? (
+          this.state.result === "No game scheduled on this date." ||
+          this.state.result === "Season is not supported." ? (
             <div>
               <br></br>
-              <h1>Results on {this.state.date}</h1>
-              <SimulationResult noGame={true}></SimulationResult>
+              <h1 className="date-info">Results on {this.state.date}</h1>
+              <SimulationResult
+                noGame={true}
+                message={this.state.result}
+              ></SimulationResult>
             </div>
           ) : (
             <div>
               <br></br>
-              <h1>Results on {this.state.date}</h1>
+              <h1 className="date-info">Results on {this.state.date}</h1>
               {this.state.result.map(game => {
                 return (
                   <SimulationResult

@@ -21,3 +21,23 @@
   background-color: #555;
   color: whitesmoke;
 }
+
+@media only screen and (max-width: 650px) {
+  .info {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .info img {
+    max-width: 80%;
+  }
+
+  .about {
+    display: inline-block;
+  }
+
+  .about h1,
+  .heading {
+    font-size: 20px;
+  }
+}

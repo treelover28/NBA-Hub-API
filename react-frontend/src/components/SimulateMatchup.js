@@ -198,15 +198,15 @@ class SimulateMatchup extends React.Component {
         <div className="team-select">
           <div className="selection">
             <button
-              className="button in-selection"
+              className="button in-selection prev"
               onClick={this.leftArrow.bind(this, true)}
             >
-              Previous
+              <span>Previous</span>
             </button>
             <div className="team-panel">
               <h1>HOME</h1>
 
-              <img src={this.state.homePicture}></img>
+              <img className="team-logo" src={this.state.homePicture}></img>
 
               <h3>{this.state.home}</h3>
               <h2>Season</h2>
@@ -230,23 +230,23 @@ class SimulateMatchup extends React.Component {
               </select>
             </div>
             <button
-              className="button in-selection"
+              className="button in-selection next"
               onClick={this.rightArrow.bind(this, true)}
             >
-              Next
+              <span>Next</span>
             </button>
           </div>
-
+          <br></br>
           <div className="selection">
             <button
-              className="button in-selection"
+              className="button in-selection prev"
               onClick={this.leftArrow.bind(this, false)}
             >
-              Previous
+              <span>Previous</span>
             </button>
             <div className="team-panel">
               <h1>AWAY</h1>
-              <img src={this.state.awayPicture}></img>
+              <img className="team-logo" src={this.state.awayPicture}></img>
               <h3>{this.state.away}</h3>
               <h2>Season</h2>
               <select
@@ -269,10 +269,10 @@ class SimulateMatchup extends React.Component {
               </select>
             </div>
             <button
-              className="button in-selection"
+              className="button in-selection next"
               onClick={this.rightArrow.bind(this, false)}
             >
-              Next
+              <span>Next</span>
             </button>
           </div>
         </div>

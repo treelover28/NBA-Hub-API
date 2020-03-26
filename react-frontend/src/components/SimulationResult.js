@@ -7,13 +7,13 @@ const SimulationResult = props => {
       {props.noGame ? (
         <div>
           <br></br>
-          <h2>NO GAMES SCHEDULED ON THIS DATE</h2>
+          <h2>{props.message}</h2>
           <br></br>
         </div>
       ) : (
         <div>
           <div className="result-container">
-            <div className="home">
+            <div className="team">
               <img
                 src={props.homeLogo}
                 className="nba-logo"
@@ -27,7 +27,7 @@ const SimulationResult = props => {
                 <h4>{props.homeProbs}</h4>
               </div>
             </div>
-            <div className="away">
+            <div className="team">
               <img
                 src={props.awayLogo}
                 alt="away team logo"

@@ -57,6 +57,56 @@ hr {
 
 .button.dropdown:hover {
   background-color: snow;
-  color: black;
-  width: 30%;
+}
+
+@media only screen and (max-width: 900px) {
+  .team-logo {
+    width: 60%;
+  }
+
+  .selection {
+    display: inline-flex;
+    text-align: center;
+    vertical-align: center;
+    margin: 0 0;
+    border-bottom: 1px solid #555;
+  }
+
+  .button.in-selection {
+    width: 20%;
+    object-fit: contain;
+  }
+
+  .button.in-selection span {
+    font-size: 12px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    display: inline-block;
+    vertical-align: center;
+    display: none;
+    /* content: "<"; */
+  }
+
+  .button.in-selection.next::after {
+    content: ">";
+  }
+  .button.in-selection.prev::after {
+    content: "<";
+  }
+
+  .dropdown {
+    width: 90%;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+    margin-bottom: 20px;
+  }
+
+  .button.dropdown:hover {
+    background-color: snow;
+    color: black;
+  }
+
+  .border {
+    border-bottom: 1px solid #555;
+  }
 }
