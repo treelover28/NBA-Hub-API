@@ -8,9 +8,8 @@ import simulation
 import re
 from datetime import datetime
 
-sys.path.append("../")
-from objectClass.Team import Team
-from objectClass.Player import Player
+from Team import Team
+from Player import Player
 
 
 class server(object):

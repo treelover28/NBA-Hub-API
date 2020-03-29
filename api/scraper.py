@@ -3,10 +3,9 @@ import requests
 import re
 import sys
 
-sys.path.append("../")
 from datetime import datetime
-from objectClass.Team import Team
-from objectClass.Player import Player
+from Team import Team
+from Player import Player
 
 
 def scrape_teams(season: int = 2020):

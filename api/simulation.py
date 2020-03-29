@@ -2,7 +2,7 @@ import sys
 
 sys.path.append("../")
 from api.server import server
-from objectClass.Team import Team
+from Team import Team
 from numpy import random
 import scraper
 import datetime

@@ -2,7 +2,7 @@ from server import server
 import scraper
 import simulation
 import pymongo
-from objectClass.Team import Team
+from Team import Team
 from pprint import pprint as pretty
 from datetime import datetime
 
