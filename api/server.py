@@ -258,6 +258,57 @@ class server(object):
             self.update_teams_specified_season(2020)
             print("UPDATED")
 
+    def simulate_all_games_on_date(self, year: int, month: int, day: int):
+        if simulation.is_validate_date(year, month, day):
+            games_on_date = scraper.scrape_schedule(year, month, day)
+            if len(games_on_date) == 0:
+                print("No game scheduled on this date.")
+                return "No game scheduled on this date."
+            season = scraper.season_of_date(year, month, day)
+            games = []
+            for game in games_on_date:
+                res = server.simulate(
+                    self, game[0], game[1], seasonA=season, seasonB=season
+                )
+                # print("result in simulation")
+                # print(res)
+                # print("\n")
+                games.append(res)
+            return games
+
+    def simulate(
+        self,
+        teamA: str,
+        teamB: str,
+        repetition: int = 10000,
+        seasonA: int = 2020,
+        seasonB: int = 2020,
+    ):
+        """
+        Return dictionary of game result
+        """
+        print(teamA)
+        # allow simulation between teams in different seasons!
+        if len(teamA) == 3:
+            nameA = simulation.switch_abbreviation_teamName(teamA.lower())
+            if nameA is not None:
+                teamA = nameA
+        if len(teamB) == 3:
+            nameB = simulation.switch_abbreviation_teamName(teamB.lower())
+            if nameB is not None:
+                teamB = nameB
+
+        A = self.get_team(teamName=teamA, season=seasonA)
+        B = self.get_team(teamName=teamB, season=seasonB)
+        if A is None or B is None:
+            print(A is None)
+            print(B is None)
+            print("Error. Team object(s) is/are null. Check spelling?")
+            return
+        else:
+            game_dict = simulation.simulateMatches(A, B)
+            return game_dict
+
 
 def main():
     s = server()

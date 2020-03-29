@@ -56,6 +56,7 @@ def handle_teams_simulation():
 
 @app.after_request
 def after_request(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add(
         "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
     )
@@ -63,4 +64,4 @@ def after_request(response):
     return response
 
 
-app.run(debug=True)
+app.run(debug=True, host="0.0.0.0")

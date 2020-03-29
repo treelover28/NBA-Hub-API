@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append("../")
-from api.server import server
 from Team import Team
 from numpy import random
 import scraper
@@ -82,56 +78,6 @@ def simulateMatches(a: Team, b: Team, repetition: int = 10000, season: int = 202
         f"{a.team_name}, {a.season}: chance of winning = {round(probability_A * 100, 2)}%, predicted score = {round(scoreA/repetition,2)} \n{b.team_name}, {b.season}: chance of winning = {round(probability_B* 100,2)}%, predicted score = {round(scoreB/repetition,2)} \nChance of going to overtime : {round(overtime_count/repetition * 100,2)}% \n"
     )
     return game_dict
-
-
-def simulate(
-    teamA: str,
-    teamB: str,
-    repetition: int = 10000,
-    seasonA: int = 2020,
-    seasonB: int = 2020,
-):
-    """
-    Return dictionary of game result
-    """
-    # allow simulation between teams in different seasons!
-    connection = server()
-    if len(teamA) == 3:
-        nameA = switch_abbreviation_teamName(teamA.lower())
-        if nameA is not None:
-            teamA = nameA
-    if len(teamB) == 3:
-        nameB = switch_abbreviation_teamName(teamB.lower())
-        if nameB is not None:
-            teamB = nameB
-
-    A = connection.get_team(teamName=teamA, season=seasonA)
-    B = connection.get_team(teamName=teamB, season=seasonB)
-    if A is None or B is None:
-        print(A is None)
-        print(B is None)
-        print("Error. Team object(s) is/are null. Check spelling?")
-        return
-    else:
-        game_dict = simulateMatches(A, B)
-        return game_dict
-
-
-def simulate_all_games_on_date(year: int, month: int, day: int):
-    if is_validate_date(year, month, day):
-        games_on_date = scraper.scrape_schedule(year, month, day)
-        if len(games_on_date) == 0:
-            print("No game scheduled on this date.")
-            return "No game scheduled on this date."
-        season = scraper.season_of_date(year, month, day)
-        games = []
-        for game in games_on_date:
-            res = simulate(game[0], game[1], seasonA=season, seasonB=season)
-            # print("result in simulation")
-            # print(res)
-            # print("\n")
-            games.append(res)
-        return games
 
 
 def is_validate_date(year: int, month: int, day: int):
