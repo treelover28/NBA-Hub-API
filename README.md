@@ -1,51 +1,49 @@
-# NBA Match Predictor &copy; 
-**PROJECT IN PROGRESS** 
+# NBA Match Predictor API
 
-**Author:** Khai H Lai
+### Installation/Setup (localhost)
 
-**Last Updated:** 12/11/2019
+- Install MongoDB server package on your computer
+- Start a mongod instance on your computer. For example, on Linux Ubuntu
 
-**Changelog**: Please refer to [changelog.md](https://github.com/treelover28/NBA-match-predictor/blob/master/changelog.md) for full history of changes. Most recent changes includes:
- 
-* Added front-end web client to allow users to simulate games! Need to fix designs a bit though and add actual text description in place of the generic lorem ipsum. However, so far the structure and functionalities are taken care of!
-* Frontend web client is implemented using HTML/CSS/Javascript
-* Simulation functions in simulation.py now returns dictionaries of games results! 
+```
+    sudo systemctl start mongod // Start the mongod server
+    sudo mongod // runs the server
+```
 
-### Video Showcase: 
-Click to play video lol
-[![Watch the video](https://user-images.githubusercontent.com/50902696/70679472-7855b400-1c52-11ea-871d-2e8993d2eb13.png)](https://www.youtube.com/watch?v=AoI-O0cpjbo)
+- To get all the dependencies required, you can either install all required dependencies on your computer or (if you're on Linux Ubuntu like I am!) start the virtual environment accompanied with this project
 
-**Language:** Python
+To install directly on your local computer
 
-**Technology used so far** :
-* Python Eve.
-* MongoDB/pyMongo driver
-* BeautifulSoup scraper utilities
-* HTML/CSS/Javascript for front end
-* To be updated
+```
 
-![Lakers](https://cdn.vox-cdn.com/thumbor/bSTk8WcbM2GtJttReLLsHnudFqg=/0x0:4962x3308/1200x800/filters:focal(1577x516:2369x1308)/cdn.vox-cdn.com/uploads/chorus_image/image/65753143/1189031820.jpg.0.jpg)
+  cd api // go to api directory
+  pip3 install requirements.txt // if you are using Python 3
+  pip install requirements.text // if you are using Python 2
 
-This simple program uses Monte Carlo simulation to:
-  * predict the result of an NBA match.
-  * output each team's probability of winning the matchup.
+```
 
-* Has functionality to scrape game calendar on a specified date and simulate games on that date.
-* Allows matchup simulation between teams from different seasons. Only support from the 2015-2020 seasons as of right now.
+To start virtual environment instead, do:
 
- 
-### Example simulation results on games on Christmas Day! 
-![image](https://user-images.githubusercontent.com/50902696/69781254-c5258f00-116a-11ea-8a75-5226030a4498.png)
+```
+    // Assuming you are in project's root directory /NBA-Match-Predictor
+    source ./virtualenv/bin/activate
 
-### Procedure Description
-The simulator uses BeautifulSoup utility to scrape data from Basketball Reference and Team Rankings. It then uses Monte-Carlo simulation (basically added random statistical variations applied on the procedure described on [Basketball Distribution](http://thebasketballdistribution.blogspot.com/2009/01/how-to-predict-final-score.html)) to give the probability of each team winning the match-up. By default, unless otherwise specified by user, the algorithm will simulate a matchup 10,000 times before returning the average winning probability for each team.
+```
 
-### Features to be added:
-For more information and details, please refer to the [Software Requirement Specification](https://github.com/treelover28/NBA-match-predictor/blob/master/Software%20Requirement%20Specification.md) for deadlines for these updates.
+- Start the API
 
-* Working interactive frontend/U.I
-* Neural network to predict game results
-* Host webapp on live website 
-* Maybe user login, authentication, or email list (?)
+```
+    // Assuming you are in project's root directory /NBA-Match-Predictor
+    // go into api directory
+    cd api
+    python3 app.py
+```
 
+- If this is your first time starting the API, your local MongoDB database is probably empty.
 
+  - The API is configured to auto-update the database immediately after startup.
+  - **NOTE** the first update will take roughly ~3-4 minutes since it is filling up your local mongoDB database with data from all 5 seasons from 2015-2020.
+
+- Test your API is running by running the main function in client.py which attempts to:
+  - Simulate a game between Clippers and Lakers
+  - Simulate games on Christmas Day 12/25/2019

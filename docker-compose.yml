@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    container_name: nbahub-api
+    ports:
+      - 5000:5000
+    networks:
+      - nbanet
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_DBNAME=nba
+    links:
+      - mongodb
+    restart: always
+
+  # API-datastore
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/usr/data/db
+      # - MONGO_INITDB_DATABASE=nba
+      # - MONGO_INITDB_ROOT_USERNAME=admin
+      # - MONGO_INITDB_ROOT_PASSWORD=
+    networks:
+      - nbanet
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+  #nbaHub
+  website:
+    build:
+      context: ./frontend
+      dockerfile: web.Dockerfile
+    image: kl/nbahub:latest
+    container_name: nbahub-ui
+    ports:
+      - 3000:3000
+    networks:
+      - nbanet
+    links:
+      - api
+
+networks:
+  nbanet:
+    driver: bridge
+
+volumes:
+  mongodata:

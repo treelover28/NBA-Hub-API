@@ -9,4 +9,5 @@ RUN pip3 install -r requirements.txt
 COPY . /app/nba-match-predictor
 EXPOSE 5000
 # launch app
-CMD ["python3", "/app/nba-match-predictor/api/app.py"]
+ENV FLASK_APP=app.py
+CMD ["python3", "-b", "/app/nba-match-predictor/api/app.py"]
