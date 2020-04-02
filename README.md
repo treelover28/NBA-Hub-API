@@ -1,4 +1,4 @@
-# NBA Match Predictor API
+# NBA Hub API
 
 ### Installation/Setup (localhost)
 
@@ -15,18 +15,13 @@
 To install directly on your local computer
 
 ```
+  // if you are using Python 3
+  pip3 install requirements.txt
+  pip3 install pymongo[srv]
 
-  cd api // go to api directory
-  pip3 install requirements.txt // if you are using Python 3
-  pip install requirements.text // if you are using Python 2
-
-```
-
-To start virtual environment instead, do:
-
-```
-    // Assuming you are in project's root directory /NBA-Match-Predictor
-    source ./virtualenv/bin/activate
+  // if you are using Python 2
+  pip install requirements.text
+  pip install pymongo[srv]
 
 ```
 
@@ -36,7 +31,7 @@ To start virtual environment instead, do:
     // Assuming you are in project's root directory /NBA-Match-Predictor
     // go into api directory
     cd api
-    python3 app.py
+    python3 deploy.py
 ```
 
 - If this is your first time starting the API, your local MongoDB database is probably empty.

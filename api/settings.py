@@ -1,15 +1,23 @@
 from dotenv import load_dotenv, find_dotenv
 import os
 
-load_dotenv(find_dotenv())
+path_to_env = find_dotenv()
+load_dotenv(path_to_env)
 ## SETTINGS
 # allows requests from all parties
 X_DOMAINS = "*"
 # connect to MongoDB server
 
-MONGO_URI = "mongodb://{}:{}@{}-shard-00-00-i0wqa.mongodb.net:27017,nba-shard-00-01-i0wqa.mongodb.net:27017,nba-shard-00-02-i0wqa.mongodb.net:27017/test?ssl=true&replicaSet=nba-shard-0&authSource=admin&retryWrites=true&w=majority".format(
-    os.getenv("MONGO_USERNAME"), os.getenv("MONGO_PASSWORD"), os.getenv("MONGO_HOST")
-)
+# .env file is present, .env file is for deployment purpose- contact hoangkhai28081999@yahoo.com.vn for permission
+if path_to_env != "":
+    MONGO_URI = "mongodb://{}:{}@{}-shard-00-00-i0wqa.mongodb.net:27017,nba-shard-00-01-i0wqa.mongodb.net:27017,nba-shard-00-02-i0wqa.mongodb.net:27017/test?ssl=true&replicaSet=nba-shard-0&authSource=admin&retryWrites=true&w=majority".format(
+        os.getenv("MONGO_USERNAME"),
+        os.getenv("MONGO_PASSWORD"),
+        os.getenv("MONGO_HOST"),
+    )
+else:
+    MONGO_URL = "mongodb://localhost:27017/nba"
+
 # allowed team names
 allowed_teamName = [
     "Atlanta Hawks",
@@ -90,20 +98,7 @@ player_schema = {
     "offensive_rating": stats_schema,
     "defensive_rating": stats_schema,
 }
-# define schema of matchup endpoint
-# matchup_schema = {
-#     "date": {"type": "float", "required": True},  # will convert using datetime
-#     "matchup_teams": {
-#         "type": "list",
-#         "schema": {
-#             "type": "objectid",
-#             "required": True,
-#             "data_relation": {"resource": "teams", "embeddable": True, "field": "_id"},
-#             "maxlength": 2,
-#             "minlength": 2,
-#         },
-#     },
-# }
+
 RESOURCE_METHODS = ["GET", "POST", "DELETE"]
 ITEM_METHODS = ["GET", "PATCH", "PUT", "DELETE"]
 
