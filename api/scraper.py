@@ -196,8 +196,8 @@ def scrape_players(season: int = 2020):
         advanced_soup = BeautifulSoup(advanced_doc.text, "lxml")
         per = advanced_soup.findAll(attrs={"data-stat": "per"})
         ts_pct = advanced_soup.findAll(attrs={"data-stat": "ts_pct"})
-        for pct in player_name:
-            print(pct.text)
+        # for pct in player_name:
+        #     print(pct.text)
         ows = advanced_soup.findAll(attrs={"data-stat": "ows"})
         dws = advanced_soup.findAll(attrs={"data-stat": "dws"})
 

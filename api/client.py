@@ -1,4 +1,5 @@
 import sys
+import settings
 
 sys.path.append("../")
 from server import server
@@ -13,7 +14,8 @@ from datetime import datetime
 class client(object):
     def __init__(self):
         # connect to mongoDB
-        self.my_client = pymongo.MongoClient("localhost", 27017)
+        # self.my_client = pymongo.MongoClient("localhost", 27017)
+        self.my_client = pymongo.MongoClient(settings.MONGO_URI)
         self.db = self.my_client.get_database("nba")
 
     def simulate_games_on_date(self, year: int, month: int, day: int):

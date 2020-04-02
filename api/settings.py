@@ -1,9 +1,15 @@
-## SETTINGS
+from dotenv import load_dotenv, find_dotenv
+import os
 
+load_dotenv(find_dotenv())
+## SETTINGS
 # allows requests from all parties
 X_DOMAINS = "*"
 # connect to MongoDB server
-MONGO_URI = "mongodb://localhost:27017/nba"
+
+MONGO_URI = "mongodb://{}:{}@{}-shard-00-00-i0wqa.mongodb.net:27017,nba-shard-00-01-i0wqa.mongodb.net:27017,nba-shard-00-02-i0wqa.mongodb.net:27017/test?ssl=true&replicaSet=nba-shard-0&authSource=admin&retryWrites=true&w=majority".format(
+    os.getenv("MONGO_USERNAME"), os.getenv("MONGO_PASSWORD"), os.getenv("MONGO_HOST")
+)
 # allowed team names
 allowed_teamName = [
     "Atlanta Hawks",

@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: api.Dockerfile
+      dockerfile: Dockerfile.api
     container_name: nbahub-api
     ports:
       - 5000:5000
@@ -36,8 +36,7 @@ services:
   website:
     build:
       context: ./frontend
-      dockerfile: web.Dockerfile
-    image: kl/nbahub:latest
+      dockerfile: Dockerfile.web
     container_name: nbahub-ui
     ports:
       - 3000:3000

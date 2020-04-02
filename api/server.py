@@ -7,14 +7,15 @@ import scraper
 import simulation
 import re
 from datetime import datetime
-
+import settings
 from Team import Team
 from Player import Player
 
 
 class server(object):
     def __init__(self):
-        self.connection = pymongo.MongoClient("localhost", 27017)
+        # self.connection = pymongo.MongoClient("localhost", 27017)
+        self.connection = pymongo.MongoClient(settings.MONGO_URI)
         self.db = self.connection.get_database("nba")
         # check if database is empty, in case this is the first time the API start
         # or if database if missing information for some reason
@@ -270,9 +271,6 @@ class server(object):
                 res = server.simulate(
                     self, game[0], game[1], seasonA=season, seasonB=season
                 )
-                # print("result in simulation")
-                # print(res)
-                # print("\n")
                 games.append(res)
             return games
 
@@ -308,16 +306,3 @@ class server(object):
         else:
             game_dict = simulation.simulateMatches(A, B)
             return game_dict
-
-
-def main():
-    s = server()
-    # s.connection.drop_database("nba")
-    # s.delete_all_players_seasons()
-    # s.delete_all_teams()
-    # s.update_teams_all_seasons()
-    # s.update_all_players_all_seasons()
-
-
-if __name__ == "__main__":
-    main()
