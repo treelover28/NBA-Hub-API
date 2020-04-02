@@ -8,9 +8,8 @@ COPY ./requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install pymongo[srv]
 RUN pip3 install lxml
-RUN pip3 install gunicorn
 COPY . /app/nba-match-predictor
 EXPOSE 5000
 # launch app
 ENV FLASK_APP=app.py
-CMD ["python3", "-b", "/app/nba-match-predictor/api/app.py"]
+CMD ["python3", "-b", "/app/nba-match-predictor/api/deploy.py"]

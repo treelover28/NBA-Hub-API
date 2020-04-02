@@ -1,9 +1,9 @@
+requests==2.18.4
 numpy==1.18.2
-Flask==1.1.1
-pymongo==3.10.1
+Flask_Cors==3.0.8
 Eve==1.1
 pandas==1.0.3
-requests==2.18.4
-Flask_Cors==3.0.8
+tornado==6.0.4
+pymongo==3.10.1
+Flask==1.1.1
 beautifulsoup4==4.8.2
-python-dotenv==0.12.0
