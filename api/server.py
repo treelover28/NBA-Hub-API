@@ -116,8 +116,8 @@ class server(object):
                     post_request.status_code, post_request.text
                 )
             )
-        else:
-            print("Team posted successfully! Team : {}".format(team_data["team_name"]))
+        # else:
+        #     print("Team posted successfully! Team : {}".format(team_data["team_name"]))
 
     def update_teams_all_seasons(self):
         self.delete_all_teams()
@@ -177,12 +177,6 @@ class server(object):
             print(
                 "Error occured with post_player(). Status code: {}, \n {} ".format(
                     post_request.status_code, post_request.text
-                )
-            )
-        else:
-            print(
-                "Player posted successfully! Player : {} ".format(
-                    player_data["player_name"]
                 )
             )
 
