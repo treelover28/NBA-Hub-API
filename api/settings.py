@@ -10,10 +10,11 @@ X_DOMAINS = "*"
 
 # .env file is present, .env file is for deployment purpose- contact hoangkhai28081999@yahoo.com.vn for permission
 if path_to_env != "":
-    MONGO_URI = "mongodb://{}:{}@{}-shard-00-00-i0wqa.mongodb.net:27017,nba-shard-00-01-i0wqa.mongodb.net:27017,nba-shard-00-02-i0wqa.mongodb.net:27017/test?ssl=true&replicaSet=nba-shard-0&authSource=admin&retryWrites=true&w=majority".format(
+    MONGO_URI = "mongodb://{}:{}@{}-shard-00-00-i0wqa.mongodb.net:27017,nba-shard-00-01-i0wqa.mongodb.net:27017,nba-shard-00-02-i0wqa.mongodb.net:27017/{}?ssl=true&replicaSet=nba-shard-0&authSource=admin&retryWrites=true&w=majority".format(
         os.getenv("MONGO_USERNAME"),
         os.getenv("MONGO_PASSWORD"),
         os.getenv("MONGO_HOST"),
+        os.getenv("MONGO_DBNAME"),
     )
 else:
     MONGO_URL = "mongodb://localhost:27017/nba"
