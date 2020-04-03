@@ -1,6 +1,7 @@
 import pymongo
 import json
 import requests
+from dotenv import load_dotenv, find_dotenv
 from pprint import pprint as pretty
 import sys
 import scraper
@@ -14,7 +15,6 @@ from Player import Player
 
 class server(object):
     def __init__(self):
-        # self.connection = pymongo.MongoClient("localhost", 27017)
         self.connection = pymongo.MongoClient(settings.MONGO_URI)
         self.db = self.connection.get_database("nba")
         # check if database is empty, in case this is the first time the API start
@@ -26,7 +26,6 @@ class server(object):
             self.update_all_players_all_seasons()
         else:
             # if data is not empty AND there is no missing data, try to update it
-            print("UPDATE")
             self.update()
 
     def url_for(self, endpoint):
@@ -36,7 +35,12 @@ class server(object):
             endpoint (str) : name of endpoint
         Return url to endpoint
         """
-        return "http://localhost:5000/{}/".format(endpoint)
+        path_to_env = find_dotenv()
+        api_destination = "http://localhost:5000/{}/".format(endpoint)
+        if path_to_env != "":
+            api_destination = "https://nbahub-api.herokuapp.com/{}/".format(endpoint)
+
+        return api_destination
 
     def delete_all_teams(self):
         """ 

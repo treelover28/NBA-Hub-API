@@ -7,8 +7,6 @@ WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install pymongo[srv]
-RUN pip3 install lxml
-RUN pip3 install python-dotenv
 COPY . /app/nba-match-predictor
 EXPOSE 5000
 EXPOSE 8000

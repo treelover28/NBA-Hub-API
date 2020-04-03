@@ -109,20 +109,6 @@ class client(object):
         connection = server()
         return connection.get_players(player_name, season)
 
-    # def update(self):
-    #     """
-    #     Update team statistics on database if last update was more than 24 hours ago. \n
-    #     No argument.
-    #     """
-    #     team = self.db["teams"].find_one({"season": 2020})
-    #     # find time differences
-    #     time_diff = datetime.today() - team["_created"]
-    #     # if total time difference is more than 24 hours, then update
-    #     if time_diff.total_seconds() > (24 * 3600):
-    #         connection = server()
-    #         connection.update_teams_specified_season(2020)
-    #         print("UPDATED")
-
 
 def main():
     c = client()
