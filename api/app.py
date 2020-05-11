@@ -66,4 +66,4 @@ def after_request(response):
     return response
 
 
-app.run(debug=True, host="0.0.0.0", port=port)
+app.run(debug=True, host="0.0.0.0", port=port, threaded=True)
