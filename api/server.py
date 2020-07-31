@@ -38,7 +38,8 @@ class server(object):
         path_to_env = find_dotenv()
         api_destination = "http://localhost:5000/{}/".format(endpoint)
         if path_to_env != "":
-            api_destination = "https://nbahub-api.herokuapp.com/{}/".format(endpoint)
+            api_destination = "https://nbahub-api.herokuapp.com/{}/".format(
+                endpoint)
 
         return api_destination
 
@@ -117,7 +118,8 @@ class server(object):
                 )
             )
         else:
-            print("Team posted successfully! Team : {}".format(team_data["season"]))
+            print("Team posted successfully! Team : {}".format(
+                team_data["season"]))
 
     def update_teams_all_seasons(self):
         self.delete_all_teams()
@@ -137,7 +139,8 @@ class server(object):
 
     def get_team(self, teamName: str, season: int):
         name = re.compile(teamName, re.IGNORECASE)
-        result = self.db["teams"].find_one({"team_name": name, "season": season})
+        result = self.db["teams"].find_one(
+            {"team_name": name, "season": season})
         if result is not None:
             team = Team(
                 team_name=result["team_name"],
@@ -218,7 +221,8 @@ class server(object):
         # support search for partial strings
         # for example, if you search for "Antetokounmpo", it would return all 3 players with that last name!
         name = re.compile(player_name, re.IGNORECASE)
-        players = self.db["players"].find({"player_name": name, "season": season})
+        players = self.db["players"].find(
+            {"player_name": name, "season": season})
 
         if players is not None:
             players_matched = []
