@@ -124,7 +124,9 @@ def scrape_schedule(year: int, month: int, day: int):
 
 def season_of_date(year: int, month: int, day: int):
     # Any game in June to December of 2019 technically belongs to the 2020 season
-    if month > 6 and month <= 12:
+    if (year == 2020 and month <= 10):
+        return 2020
+    elif month > 6 and month <= 12:
         season = year + 1
     else:
         season = year
@@ -203,8 +205,10 @@ def scrape_players(season: int = 2020):
 
         per_poss_doc = requests.get(per_pos_url)
         per_poss_soup = BeautifulSoup(per_poss_doc.text, "lxml")
-        offensive_rating = per_poss_soup.findAll(attrs={"data-stat": "off_rtg"})
-        defensive_rating = per_poss_soup.findAll(attrs={"data-stat": "def_rtg"})
+        offensive_rating = per_poss_soup.findAll(
+            attrs={"data-stat": "off_rtg"})
+        defensive_rating = per_poss_soup.findAll(
+            attrs={"data-stat": "def_rtg"})
 
         playerList = []
         for i in range(1, len(player_name)):
